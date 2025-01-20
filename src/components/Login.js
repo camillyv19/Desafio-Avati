@@ -1,10 +1,10 @@
 
-
 import { useForm } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import { Card, notification } from 'antd';
 import "./login.css";
+import ilustracao from "./img/ilustracao.png";
 
 
 export function Login(){
@@ -15,24 +15,41 @@ export function Login(){
      });
 
     const { register, handleSubmit, formState: { errors} } = useForm({
-       
+        mode: 'onBlur',
+        reValidateMode: 'onBlur',
         resolver: yupResolver(schema)
     })
 
-    function enviar(values) {
-        console.log(values)
-        notification.open({
-            message: 'titulo',
-            description: 'mensagem',
-          });
+    function entrar(values) {
+        
+        const user = {
+            email: "admin@gmail.com",
+            senha: "123456"
+        }
+
+        if(values.email === user.email && values.senha === user.senha){
+            notification.open({
+                type: "success",
+                message: 'Usuário Autenticado'
+              });
+        }
+        else{
+            notification.open({
+                type: "error",
+                message: 'Usuário Não Encontrado'
+              });  
+        }
     }
 
     return(
         <div className="layout">
+           
             <Card className="card">
+              <img className= "image" src={ilustracao}  alt="Ilustração"></img>
+              <p className="login-name">Login</p>
                 <form 
                     className= "login-form"
-                    onSubmit={handleSubmit(enviar)}
+                    onSubmit={handleSubmit(entrar)}
                     >
                         <div className="section-input">
                             <label 
@@ -73,7 +90,7 @@ export function Login(){
                             )}
                             
                         </div>
-                    <button>Enviar</button>
+                    <button>Entrar</button>
                 </form>
             </Card>
         </div>
