@@ -22,9 +22,9 @@ Pra iniciar a aplicação
 Abra [http://localhost:3000](http://localhost:3000) para visualizar em seu browser.
 
 ### Realizar login
-coloque as credencias abaixo no formulário de login
-login: admin@gmail.com
-senha: 123456
+coloque as credencias abaixo no formulário de login:
+- login: admin@gmail.com
+- senha: 123456
 
 ## observações: 
 - caso as credencias sejam válidas, irá aparecer uma notificação de usuário autenticado
